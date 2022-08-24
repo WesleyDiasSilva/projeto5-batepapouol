@@ -1,0 +1,49 @@
+.tela{
+  background-color: rgb(207, 204, 204);
+}
+
+.mensagens{
+  margin-top: 30px;
+}
+
+.mensagem{
+  background-color: red;
+  height: 30px;
+}
+
+.login{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-superior{
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+  box-sizing: border-box;
+  height: 80px;
+  background-color: white;
+}
+
+#logo-menu{
+  width: 75px;
+  height: 53px;
+}
+
+#participantes{
+  width: 40px;
+  height: 40px;
+  margin-top: 5px;
+}
+
+.disable{
+  display: none;
+}
+
+.login img{
+  width: 33%;
+  margin-top: 100px;
+  margin-bottom: 150px;
+}
