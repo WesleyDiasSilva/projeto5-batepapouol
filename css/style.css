@@ -7,6 +7,7 @@ body{
 
 .tela{
   background-color: #f3f3f3;
+  height: 100vh;
 }
 
 .chat{
@@ -14,20 +15,25 @@ body{
 }
 
 .mensagem{
-  height: 20px;
+  height: 50px;
   width: 100%;
   padding: 15px;
   font-size: 14px;
-  margin-top: 10px;
+  margin-top: 5px;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
 }
 
 .horario{
   color: #a7a7a7;
+  margin-right: 5px;
 }
 
 .nome, .destinatario{
   font-weight: bold;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
 .normal{
@@ -101,11 +107,6 @@ body{
   display: none;
 }
 
-.barra-inferior{
-  position: fixed;
-  bottom: 0px;
-  left: 0px;
-}
 
 .modal-lateral-desativado{
   display: none;
@@ -160,3 +161,46 @@ body{
   height: 25px;
 }
 
+.barra-inferior{
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  left: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  box-sizing: border-box;
+  height: 80px;
+  background-color: white;
+}
+
+.barra-inferior div{
+  display: flex;
+  flex-direction: column;
+}
+
+.barra-inferior input{
+  margin-bottom: 10px;
+  border: none;
+}
+
+.barra-inferior span{
+  margin-left: 3px;
+}
+
+.barra-inferior input::placeholder{
+  color: #000;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.barra-inferior input:focus{
+  box-shadow: 0 0 0 0;
+  outline: 0;
+}
+
+.barra-inferior ion-icon{
+  width: 26px;
+  height: 26px;
+}
