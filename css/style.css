@@ -1,14 +1,45 @@
-.tela{
-  background-color: rgb(207, 204, 204);
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+body{
+  font-family: Roboto;
 }
 
-.mensagens{
+.tela{
+  background-color: #f3f3f3;
+}
+
+.chat{
   margin-top: 30px;
 }
 
 .mensagem{
-  background-color: red;
-  height: 30px;
+  height: 20px;
+  width: 100%;
+  padding: 15px;
+  font-size: 14px;
+  word-wrap: break-word;
+  margin-top: 10px;
+}
+
+.horario{
+  color: #a7a7a7;
+}
+
+.nome, .destinatario{
+  font-weight: bold;
+}
+
+.normal{
+  background-color: white;
+}
+
+.status{
+  background-color: #DCDCDC;
+}
+
+.reservada{
+  background-color: #FFDEDE;
 }
 
 .login{
@@ -46,4 +77,10 @@
   width: 33%;
   margin-top: 100px;
   margin-bottom: 150px;
+}
+
+.barra-inferior{
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
 }
