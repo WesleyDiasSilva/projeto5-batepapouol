@@ -18,8 +18,8 @@ body{
   width: 100%;
   padding: 15px;
   font-size: 14px;
-  word-wrap: break-word;
   margin-top: 10px;
+  box-sizing: border-box;
 }
 
 .horario{
@@ -45,8 +45,36 @@ body{
 .login{
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  height: 100vh;
+  background-color: #fff;
+}
+
+.login img{
+  width: 33%;
+  margin-top: 100px;
+  margin-bottom:100px;
+}
+
+.login input{
+  text-align: center; 
+  width: 260px;
+  height: 54px;
+  border-radius: 4px;
+  border: 0.5px solid #d7d7d7 ;
+  margin-bottom: 20px;
+}
+
+.login input::placeholder{
+  color: #AEAEAE;
+}
+
+.login button{
+  width: 109px;
+  height: 35px;
+  border-radius: 9px;
+  border: none;
+  color: #696969;
 }
 
 .menu-superior{
@@ -71,12 +99,6 @@ body{
 
 .disable{
   display: none;
-}
-
-.login img{
-  width: 33%;
-  margin-top: 100px;
-  margin-bottom: 150px;
 }
 
 .barra-inferior{
