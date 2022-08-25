@@ -9,7 +9,7 @@ const barraInferior = document.querySelector('.barra-inferior')
 
 botaoLogin.addEventListener('click', login);
 
-buscaMensagens();
+renderizarMensagens();
 
 function msgErro(text = 'Preencha o nome por favor!'){
   msgErroLogin.innerHTML = text;
@@ -30,6 +30,7 @@ function login(){
     resposta.then(() => {
       transicaoLogin();
       setInterval(atualizaStatus, 4000, user);
+      setInterval(renderizarMensagens, 3000)
     }).catch(() => {
       msgErro('Já existe um usuário logado com este nome, por favor, entre com outro nome!')
     })
@@ -37,9 +38,9 @@ function login(){
 }
 
 function atualizaStatus(user){
-  let respostaAtualiza = axios.post('https://mock-api.driven.com.br/api/v6/uuol/status', user);
+  let respostaAtualiza = axios.post('https://mock-api.driven.com.br/api/v6/uol/status', user);
   respostaAtualiza
-  .then((resposta) => console.log(resposta))
+  .then()
   .catch(() => {
     voltaLogin('Você foi desconectado do servidor, por favor, coloque seu nome para entrar novamente!')
   })
@@ -64,10 +65,24 @@ function voltaLogin(msg){
   msgErro(msg);
 }
 
-let mensagens = [];
-
-function buscaMensagens(){
+function renderizarMensagens(){
   let resposta = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages');
-  resposta.then((response) => mensagens = (response.data));
+  resposta.then((response) => {
+    chat.innerHTML = '';
+    console.log('deu certo')
+    response.data.forEach((item) => {
+      if(item.type === 'status'){
+        chat.innerHTML = chat.innerHTML + `<li class="mensagem status"><span class="horario">(${item.time})</span> <span class="nome">${item.from}</span> ${item.text}</li>`
+      }
 
+      if(item.type === 'message' && item.to === 'Todos'){
+        chat.innerHTML = chat.innerHTML + `<li class="mensagem normal"><span class="horario">(${item.time})</span> <span class="nome">${item.from}</span> para <span class="destinatario">${item.to}:</span> ${item.text}</li>`
+      }
+
+      if(item.type === 'message' && item.to === 'Reservada'){
+        chat.innerHTML = chat.innerHTML + `<li class="mensagem reservada"><span class="horario">(${item.time})</span> <span class="nome">${item.from}</span> reservadamente para <span class="destinatario">${item.to}:</span> ${item.text}</li>`
+      }
+      
+    })
+  });
 }
