@@ -48,6 +48,13 @@ body{
   background-color: #FFDEDE;
 }
 
+.mensagemErro{
+  margin-top: 20px;
+  color: red;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
 .login{
   display: flex;
   flex-direction: column;
@@ -106,7 +113,6 @@ body{
 .disable{
   display: none;
 }
-
 
 .modal-lateral-desativado{
   display: none;
@@ -203,4 +209,24 @@ body{
 .barra-inferior ion-icon{
   width: 26px;
   height: 26px;
+}
+
+.desativado{
+  display: none;
+}
+
+.spinner{
+  margin-top: 40px;
+  height: 50px;
+  width: 50px;
+  border: 8px solid rgb(189, 189, 175);
+  border-radius: 50%;
+  border-left-color: orange;
+  animation: loading 1s linear infinite;
+}
+
+@keyframes loading{
+  to {
+    transform: rotate(360deg);
+  }
 }
