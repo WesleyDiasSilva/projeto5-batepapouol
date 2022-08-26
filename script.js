@@ -12,18 +12,17 @@ const fundoModal = document.querySelector('.fundo')
 const opcoesMensagem = document.getElementById('pessoas-modal')
 const mensagem = document.querySelector('.barra-inferior input')
 const iconEnviaMensagem = document.querySelector('.barra-inferior ion-icon')
-
+let user;
 document.addEventListener('keypress', function(e){
   if(e.key === 'Enter'){
     enviaMensagem()
   }
 })
+
 iconEnviaMensagem.addEventListener('click', enviaMensagem)
 fundoModal.addEventListener('click', fecharModal)
 logoModal.addEventListener('click', abrirModal)
 botaoLogin.addEventListener('click', login);
-
-renderizarMensagens();
 
 function msgErro(text = 'Preencha o nome por favor!'){
   msgErroLogin.innerHTML = text;
@@ -31,8 +30,6 @@ function msgErro(text = 'Preencha o nome por favor!'){
     msgErroLogin.innerHTML = ''
   },5000)
 }
-
-let user;
 
 function login(){
   if(usuario.value !== null && usuario.value !== undefined && usuario.value !== ' ' && usuario.value !== '' && usuario.value.length > 1){
@@ -78,24 +75,30 @@ function voltaLogin(msg){
 }
 
 function renderizarMensagens(){
+  let i = 1;
   let resposta = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages');
   resposta.then((response) => {
     chat.innerHTML = '';
     response.data.forEach((item) => {
       if(item.type === 'status'){
-        chat.innerHTML = chat.innerHTML + `<li class="mensagem status"><span class="horario">(${item.time})</span> <span class="nome">${item.from}</span> ${item.text}</li>`
+        chat.innerHTML = chat.innerHTML + `<li id="${i++}" class="mensagem status"><span class="horario">(${item.time})</span> <span class="nome">${item.from}</span> ${item.text}</li>`
       }
 
       if(item.type === 'message' && item.to === 'Todos'){
-        chat.innerHTML = chat.innerHTML + `<li class="mensagem normal"><span class="horario">(${item.time})</span> <span class="nome">${item.from}</span> para <span class="destinatario">${item.to}:</span> ${item.text}</li>`
+        chat.innerHTML = chat.innerHTML + `<li id="${i++}" class="mensagem normal"><span class="horario">(${item.time})</span> <span class="nome">${item.from}</span> para <span class="destinatario">${item.to}:</span> ${item.text}</li>`
       }
 
       if(item.type === 'message' && item.to === 'Reservada'){
-        chat.innerHTML = chat.innerHTML + `<li class="mensagem reservada"><span class="horario">(${item.time})</span> <span class="nome">${item.from}</span> reservadamente para <span class="destinatario">${item.to}:</span> ${item.text}</li>`
+        chat.innerHTML = chat.innerHTML + `<li id="${i++}" class="mensagem reservada"><span class="horario">(${item.time})</span> <span class="nome">${item.from}</span> reservadamente para <span class="destinatario">${item.to}:</span> ${item.text}</li>`
       }
       
     })
   });
+
+  if(document.getElementById('100')){
+    document.getElementById('100').scrollIntoView()
+  }
+
 }
 
 function abrirModal(){
