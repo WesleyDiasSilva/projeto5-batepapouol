@@ -18,7 +18,7 @@
       <div class="spinner disable"></div>
     </div> 
 
-    <header class="menu-superior disable">
+    <header class="menu-superior ">
       <img id="logo-menu" src="img/logo 2.png" alt="">
       <img id="participantes" src="img/Vector.png" alt="">
     </header>
@@ -32,33 +32,29 @@
         
         <h2>Escolha a visibilidade:</h2>
         <ul id="visibilidade-modal">
-          <li>
+          <li class="visibilidade-li">
             <div>
               <ion-icon name="lock-open"></ion-icon><span>Público</span>
             </div>
-        </li>
-          <li>
+            <img class="" id="ativado" src="img/Vector1.png" alt="ativado">
+          </li>
+          <li class="visibilidade-li">
             <div>
               <ion-icon name="lock-closed"></ion-icon><span>Reservadamente</span>
             </div>
+            <img class="disable" src="img/Vector1.png" alt="ativado">
           </li>
         </ul>
       </div>
     </div>
 
-
-    <ul class="chat disable">
-      <li class="mensagem status"><span class="horario">(09:21:45)</span> <span class="nome">João</span> entrou na sala...</li>
-      <li class="mensagem normal"><span class="horario">(09:22:28)</span> <span class="nome">João</span> para <span class="destinatario">Todos:</span> Bom dia</li>
-      <li class="mensagem normal"><span class="horario">(09:22:38)</span> <span class="nome">Maria</span> para <span class="destinatario">João:</span> Oi João :)</li>
-      <li class="mensagem reservada"><span class="horario">(09:22:48)</span> <span class="nome">João</span> reservadamente para <span class="destinatario">Maria:</span> Oi gatinha, quer tc?</li>
-      <li class="mensagem status"><span class="horario">(09:22:58)</span> <span class="nome">Maria</span> saiu da sala...</li>
-    </ul>
+      <ul class="chat disable">
+      </ul>
 
     <footer class="desativado barra-inferior">
       <div>
         <input type="text" placeholder="Escreva Aqui...">
-        <span>Enviando para Maria (reservadamente) </span>
+        <span>Enviando para Todos (publicamente) </span>
       </div>
       <ion-icon name="paper-plane-outline"></ion-icon>
     </footer>
