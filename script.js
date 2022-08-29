@@ -14,6 +14,7 @@ const mensagem = document.querySelector('.barra-inferior input')
 const iconEnviaMensagem = document.querySelector('.barra-inferior ion-icon')
 const visibilidadeMensage = document.getElementById('visibilidade-modal');
 const descricaoNome = document.querySelector('footer span');
+const calco = document.querySelector('.calco');
 let user;
 document.addEventListener('keypress', function(e){
   if(e.key === 'Enter'){
@@ -39,8 +40,9 @@ function login(){
     user = {name: usuario.value}
     const resposta = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants', user)
     resposta.then(() => {
+      calco.classList.remove('disable')
       transicaoLogin();
-      setInterval(atualizaStatus, 4000, user);
+      setInterval(atualizaStatus, 5000, user);
       setInterval(renderizarMensagens, 3000)
     }).catch(() => {
       msgErro('Já existe um usuário logado com este nome, por favor, entre com outro nome!')
@@ -127,7 +129,7 @@ function renderizarOpcoesMensagem(){
   </li>`
     resposta.data.forEach((item) => {
       opcoesMensagem.innerHTML = opcoesMensagem.innerHTML + `
-          <li onclick=selecionarMensagem(this)>
+          <li onclick=selecionarMensagem(this) data-identifier="participant">
             <div>
               <ion-icon name="person-circle"></ion-icon></ion-icon><span>${item.name}</span>
             </div>
@@ -156,12 +158,12 @@ function selecionarMensagem(item){
     tipoMensagemVisibilidade[0].childNodes[3].classList.remove('disable');
     tipoMensagemVisibilidade[1].childNodes[3].classList.add('disable');
     qualModeloDeEnvio = 'message'
-    descricaoNome.innerText = 'Enviando mensagem para Todos (publicamente)'
+    descricaoNome.innerText = 'Enviando para Todos (publicamente)'
   }else{
     tipoMensagemVisibilidade[0].childNodes[3].classList.add('disable');
     tipoMensagemVisibilidade[1].childNodes[3].classList.remove('disable');
     qualModeloDeEnvio = 'private_message'
-    descricaoNome.innerText = `Enviando mensagem para ${praQuemVai} (reservadamente)`
+    descricaoNome.innerText = `Enviando para ${praQuemVai} (reservadamente)`
   }
 }
 
